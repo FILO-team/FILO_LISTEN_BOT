@@ -1,0 +1,4 @@
+requests==2.23.0
+git+https://github.com/interactions-py/interactions.py.git@unstable
+discord
+python-dotenv
