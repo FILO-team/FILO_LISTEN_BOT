@@ -38,7 +38,7 @@ jobs:
       
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
-        --application-name filo_listen
+        --application-name filo_listen_bot
         --deployment-config-name CodeDeployDefault.OneAtATime
         --deployment-group-name filo_listen
         --s3-location bucket=filobottest,bundleType=tgz,key=public/filo_listen.tar.gz
