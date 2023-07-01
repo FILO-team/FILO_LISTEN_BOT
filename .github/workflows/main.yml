@@ -22,15 +22,9 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: checkout release
       uses: actions/checkout@v3
-
-    # Runs a single command using the runners shell 
-    - name: Clean temp directory
-      run: |
-        rm -rf *
-        cp -r $GITHUB_WORKSPACE . 
       
     - name: make git
-      run: tar cvfz ./FILO_LISTEN_BOT.tar.gz *
+      run: tar cvfz ./filo_listen.tar.gz *
        
     - name: AWS configure credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -40,11 +34,11 @@ jobs:
         aws-region: ap-northeast-2
         
     - name: upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./FILO_LISTEN_BOT.tar.gz s3://filobottest/FILO_LISTEN_BOT.tar.gz
+      run: aws s3 cp --region ap-northeast-2 ./filo_listen.tar.gz s3://filobottest/public/
       
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
-        --application-name filo_listen_bot
+        --application-name filo_listen
         --deployment-config-name CodeDeployDefault.OneAtATime
-        --deployment-group-name filo_listen_bot
-        --s3-location bucket=filobottest,bundleType=tgz,key=FILO_LISTEN_BOT.tar.gz
+        --deployment-group-name filo_listen
+        --s3-location bucket=filobottest,bundleType=tgz,key=public/filo_listen.tar.gz
