@@ -29,8 +29,8 @@ jobs:
         rm -rf *
         cp -r $GITHUB_WORKSPACE . 
       
-    - name: archive drcloud 
-      run: tar cvfz ./drcloud.tar.gz *
+    - name: make git
+      run: tar cvfz ./FILO_LISTEN_BOT.tar.gz *
        
     - name: AWS configure credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -40,11 +40,11 @@ jobs:
         aws-region: ap-northeast-2
         
     - name: upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./drcloud.tar.gz s3://github-action-codedeploy-s3/archive/
+      run: aws s3 cp --region ap-northeast-2 ./FILO_LISTEN_BOT.tar.gz s3://filobottest/FILO_LISTEN_BOT.tar.gz
       
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
-        --application-name githubaction-test
+        --application-name filo_listen_bot
         --deployment-config-name CodeDeployDefault.OneAtATime
-        --deployment-group-name githubaction-test-group
-        --s3-location bucket=github-action-codedeploy-s3,bundleType=tgz,key=archive/drcloud.tar.gz
+        --deployment-group-name filo_listen_bot
+        --s3-location bucket=filobottest,bundleType=tgz,key=FILO_LISTEN_BOT.tar.gz
