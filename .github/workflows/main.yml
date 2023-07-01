@@ -23,10 +23,6 @@ jobs:
     - name: checkout release
       uses: actions/checkout@v3
       
-    - name: Clean temp directory
-      run: |
-        rm -rf *
-        cp -r $GITHUB_WORKSPACE .
         
     - name: make git
       run: tar cvfz ./filo_listen.tar.gz *
