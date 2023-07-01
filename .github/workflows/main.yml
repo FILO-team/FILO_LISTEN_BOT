@@ -22,6 +22,11 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: checkout release
       uses: actions/checkout@v3
+      
+    - name: Clean temp directory
+      run: |
+        rm -rf *
+        cp -r $GITHUB_WORKSPACE .
         
     - name: make git
       run: tar cvfz ./filo_listen.tar.gz *
