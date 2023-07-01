@@ -1,11 +1,13 @@
 version 0.0
 os: linux
-
 files: 
-  - source: /
+  - source: ./
     destination: /home/ubuntu/FILO_LISTEN_BOT
 permissions:
-  - object: /home/ubuntu/FILO_LISTEN_BOT
+  - object: /home/ubuntu/
     owner: ubuntu
     group: ubuntu
-    mode: 755
+    mode: 644
+    type:
+      - directory
+      - file
