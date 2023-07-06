@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-load_dotenv("/Users/yoonhp/Desktop/FILO_LISTEN_BOT/APP/key.env")
+load_dotenv("/home/ubuntu/aws_test/FILO_LISTEN_BOT/App/key.env")
 
 VenvValue = os.environ
 
