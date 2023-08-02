@@ -3,4 +3,4 @@ __pycache__
 .DS_Store
 *.pyc
 .venv
-*.out
+nohup.out
